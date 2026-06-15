@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLY$T</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/prod.css">
+</head>
+<body>
+    <nav>
+        <p>Clyst</p>
+        <div class="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 18V20H5V18H16ZM21 11V13H3V11H21ZM19 4V6H8V4H19Z"></path></svg>
+        </div>
+    </nav>
+    {% include "nav.html" %}
+    <main class="prod">
+        <div class="image" style="background-image: url('{{ url_for('get_prod_image', prod_id=prod.id) }}');">
+            <img src="{{ url_for('get_prod_image', prod_id=prod.id) }}" alt="prod">
+        </div>
+        <div class="prod-info">
+            <div class="info">
+                <div class="facts">
+                    <a href="{{ url_for('profile', user_id=prod.user_id) }}" class="artisan">By {{ prod.user.name }}{% if prod.user_id == current_user.id %}(You){% endif %}</a>
+                    <!-- <div class="icon" id="eco-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.998 3V5C20.998 14.6274 15.6255 19 8.99805 19L7.0964 18.9999C7.3079 15.9876 8.24541 14.1648 10.6939 11.9989C11.8979 10.9338 11.7965 10.3189 11.2029 10.6721C7.1193 13.1016 5.09114 16.3862 5.00119 21.6302L4.99805 22H2.99805C2.99805 20.6373 3.11376 19.3997 3.34381 18.2682C3.1133 16.9741 2.99805 15.2176 2.99805 13C2.99805 7.47715 7.4752 3 12.998 3C14.998 3 16.998 4 20.998 3Z"></path></svg>
+                    </div>
+                    <div class="icon ai" id="ai-btn">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path></svg>
+                    </div> -->
+                </div>
+                <h1>{{ prod.name }}</h1>
+                <p>{{ prod.description.split(".")[0] }}</p>
+                <h1>₹{{ prod.price }}</h1>
+            </div>
+            <div class="quantity-grp">
+                <h3>Quantity</h3>
+                <div class="quantity">
+                    <button class="btn minus" id="minus">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M19 11H5V13H19V11Z"></path></svg>
+                    </button>
+                    <input type="number" class="quan" id="quantity" value="1" min="0" max="999999">
+                    <button class="btn plus" id="plus">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M11 11V5H13V11H19V13H13V19H11V13H5V11H11Z"></path></svg>
+                    </button>
+                </div>
+            </div>
+            <div class="btns">
+                <button class="btn btn-primary buy-btn" id="buy-btn">BUY NOW</button>
+                <button class="btn btn-secondary cart-btn" id="contact">CONTACT ARTISAN</button>
+            </div>
+            <div class="desc">
+                <h3>Description</h3>
+                <p>{{ prod.description.split(".", 1)[1] | trim }}</p>
+            </div>
+        </div>
+    </main>
+    <div class="popup">
+        <div class="popup-cont">
+            <div class="header" id="pop-header">
+                <h1 id="pop-head">This is the heading of the popup</h1>
+            </div>
+            <p id="pop-info">We have not implemented this feature yet because our focus has been on stabilizing core functionality. Adding it prematurely could create unnecessary complexity, so we are waiting for more user feedback to ensure it meets real needs.</p>
+            <button class="btn btn-primary ok-btn" id="ok-btn">OK, GOT IT</button>
+        </div>
+    </div>
+    <div class="popup contact-info" id="cont-popup">
+        <div class="popup-cont">
+            <h1>CONTACT INFO</h1>
+            <div class="cont-info">
+                <div class="contacts">
+                    <p>Phone number</p>
+                    <h3>{{ prod.user.phone }}</h3>
+                </div>
+                <div class="contacts">
+                    <p>Location</p>
+                    <h3>{{ prod.user.location }}</h3>
+                </div>
+            </div>
+            <button class="btn btn-primary ok-btn" id="close-btn">OK, GOT IT</button>
+        </div>
+    </div>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="toast {{ category }}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+    
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/prod.js"></script>
+</body>
+</html>

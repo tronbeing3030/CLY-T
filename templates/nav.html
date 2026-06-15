@@ -1,0 +1,10 @@
+<ul class="nav-menu">
+    <li><a href="{{ url_for('store') }}">STORE</a></li>
+    {% if current_user.is_authenticated %}
+    <li><a href="{{ url_for('dash') }}">DASH</a></li>
+    <li><a href="{{ url_for('logout') }}">LOGOUT</a></li>
+    {% else %}
+    <li><a href="{{ url_for('login') }}">LOGIN</a></li>
+    <li><a href="{{ url_for('register') }}">REGISTER</a></li>
+    {% endif %}
+</ul>

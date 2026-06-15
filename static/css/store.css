@@ -1,0 +1,390 @@
+.store {
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 20px;
+	padding: 20px;
+}
+
+h1 {
+	margin: 0;
+	width: -webkit-fill-available;
+	font-size: 80px;
+	text-align: left;
+	text-transform: uppercase;
+	font-weight: 400;
+	line-height: 0.8em;
+	letter-spacing: -0.08em;
+}
+
+.filter {
+	position: relative;
+	width: -webkit-fill-available;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+}
+
+.search {
+	position: relative;
+	width: -webkit-fill-available;
+	height: fit-content;
+}
+
+.filter .search input {
+	width: -webkit-fill-available;
+	height: 48px;
+	padding: 0 40px 0 46px;
+	background: var(--primary);
+	color: var(--secondary);
+	border: 2px solid var(--border-2);
+	border-radius: 4px;
+	font-size: 28px;
+	letter-spacing: -0.04em;
+	line-height: 1.2em;
+	box-sizing: border-box;
+}
+
+.filter .search .svg {
+	position: absolute;
+	width: 30px;
+	height: 30px;
+	top: 0;
+	bottom: 0;
+	margin-top: auto;
+	margin-bottom: auto;
+	fill: var(--secondary);
+	cursor: pointer;
+}
+
+.filter .search .search-icon {
+	left: 10px;
+}
+
+.filter .search .filter-icon {
+	width: 24px;
+	height: 24px;
+	right: 12px;
+	fill: var(--secondary);
+}
+
+.filter .search .filter-icon:hover {
+	opacity: 0.5;
+}
+
+.filter .search .filter-icon.active {
+	fill: var(--accent);
+}
+
+.filter .search .filter-icon svg {
+	fill: inherit;
+}
+
+.filter .tokens {
+	width: -webkit-fill-available;
+	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: flex-start;
+	gap: 10px;
+}
+
+.filter .tokens .token {
+	width: fit-content;
+	height: fit-content;
+	border-radius: 20em;
+	display: none;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 8px 16px;
+	background: var(--border);
+	color: var(--accent);
+	cursor: pointer;
+	opacity: 0;
+	visibility: hidden;
+}
+
+.filter .tokens .token.active {
+	display: flex;
+	opacity: 1;
+	visibility: visible;
+}
+
+.filter .tokens .token:hover {
+	opacity: 0.5;
+}
+
+.filter .tokens .token p {
+	margin: 0;
+	color: inherit;
+	font-size: 16px;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+.filter .tokens .token svg {
+	width: 10px;
+	height: 10px;
+	fill: #888888;
+	cursor: pointer;
+}
+
+.filter .filter-popup {
+	position: absolute;
+	top: 60px;
+	right: 0;
+	width: 236px;
+	height: fit-content;
+	display: none;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 16px;
+	padding: 20px;
+	background: var(--primary);
+	border: 1px solid var(--accent);
+	border-radius: 4px;
+	box-shadow: 0 0 5px 0 #ffc00040;
+	opacity: 0;
+	visibility: hidden;
+	transform: translateY(-20px);
+	z-index: 1;
+}
+
+.filter .filter-popup.visible {
+	display: flex;
+	opacity: 1;
+	visibility: visible;
+	transform: translateY(0px);
+}
+
+.filter .filter-popup h3 {
+	font-size: 28px;
+	letter-spacing: -0.06em;
+	line-height: 0.8em;
+}
+
+.filter .filter-popup .tokens-grp {
+	width: fit-content;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: flex-start;
+	gap: 8px;
+}
+
+.filter .filter-popup .tokens-grp .tokens {
+	width: fit-content;
+	height: fit-content;
+	height: fit-content;
+	border-radius: 20em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 0;
+	padding: 0;
+	background: var(--border);
+	color: var(--accent);
+	cursor: pointer;
+	opacity: 1;
+	visibility: visible;
+}
+
+.filter .filter-popup .tokens-grp .tokens .token {
+	width: fit-content;
+	height: fit-content;
+	border-radius: 20em;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+	padding: 8px 16px;
+	background: var(--border);
+	color: var(--accent);
+	cursor: pointer;
+	opacity: 1;
+	visibility: visible;
+}
+
+.filter .filter-popup .tokens-grp .tokens .active {
+	display: flex;
+	opacity: 1;
+	visibility: visible;
+	background-color: var(--accent);
+	color: var(--primary);
+}
+
+.products {
+	width: -webkit-fill-available;
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+	height: fit-content;
+	gap: 20px;
+}
+
+.prod {
+	width: auto;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 4px;
+	cursor: pointer;
+}
+
+.prod:hover .prod-img {
+	opacity: 0.8;
+}
+
+.prod-img {
+	position: relative;
+	width: -webkit-fill-available;
+	height: 300px;
+	border-radius: 4px;
+	background-size: cover;
+	background-position: center;
+	background-repeat: no-repeat;
+}
+
+.prod-img .icon {
+	position: absolute;
+	top: 8px;
+	left: 8px;
+	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	padding: 6px;
+	fill: var(--success);
+	background: #0d0d0dcc;
+	border: 1px solid var(--success);
+	border-radius: 20em;
+}
+
+.prod-img .ai {
+	padding: 2px;
+	border-color: var(--danger);
+	fill: var(--danger);
+}
+
+.prod-img .icon svg {
+	width: 16px;
+	height: 16px;
+	fill: inherit;
+}
+
+.prod-img .ai svg {
+	width: 24px;
+	height: 24px;
+}
+
+.prod-img .artist {
+	position: absolute;
+	bottom: 8px;
+	right: 8px;
+	padding: 4px 8px;
+	color: var(--accent);
+	background: #0d0d0dcc;
+	border: 1px solid var(--accent);
+	border-radius: 20em;
+	font-size: 12px;
+	text-decoration: none;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+.prod-img .artist:hover {
+	opacity: 0.8;
+}
+
+.prod-img:has(.artist:hover) {
+	opacity: 1;
+}
+
+.prod p {
+	width: -webkit-fill-available;
+	height: fit-content;
+	font-size: 16px;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+.empty-state {
+	width: -webkit-fill-available;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 12px;
+}
+
+.empty-state svg {
+	fill: var(--accent);
+	max-width: 64px;
+}
+
+.empty-state p {
+	font-size: 24px;
+	text-align: center;
+	line-height: 1em;
+}
+
+.empty-state .btn {
+	padding: 8px 16px;
+	font-size: 16px;
+	border-radius: 4px;
+}
+
+@media (max-width: 809px) {
+	h1 {
+		font-size: 60px;
+	}
+
+	.filter .search input {
+		height: 40px;
+		font-size: 20px;
+		padding: 2px 40px 2px 34px;
+	}
+
+	.filter .search .search-icon,
+	.filter .search .filter-icon {
+		width: 20px;
+		height: 20px;
+	}
+
+	.filter .tokens .token p,
+	.prod p {
+		font-size: 12px;
+	}
+
+	.filter .filter-popup {
+		width: fit-content;
+		padding: 16px;
+	}
+
+	.filter .filter-popup h3 {
+		font-size: 20px;
+	}
+
+	.products {
+		grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+		gap: 16px;
+	}
+
+	.prod-img {
+		height: 160px;
+	}
+
+	.prod-img .artist {
+		font-size: 10px;
+		bottom: 4px;
+		right: 4px;
+	}
+}

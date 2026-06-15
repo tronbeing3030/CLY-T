@@ -1,0 +1,271 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
+* {
+	font-family: "Poppins", sans-serif;
+	color-scheme: dark;
+	line-height: 1.25;
+	transition: all 0.2s ease;
+}
+
+:root {
+	--primary: #0d0d0d;
+	--secondary: #fff;
+	--accent: #ffc000;
+	--border: #222222;
+	--border-2: #444444;
+	--success: #00ff88;
+	--danger: #ff0044;
+}
+
+body {
+	margin: 0;
+	background: var(--primary);
+}
+
+.no-scroll {
+	overflow: hidden;
+	height: 100%;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 0;
+	/* font-size: 32px; */
+	font-weight: 400;
+}
+
+p {
+	margin: 0;
+	font-size: 20px;
+}
+
+nav {
+	position: sticky;
+	top: 0;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 12px;
+	padding: 10px 20px;
+	background: #0d0d0dcc;
+	backdrop-filter: blur(5px);
+	z-index: 20;
+	border-bottom: 1px solid var(--border);
+}
+
+nav p {
+	font-size: 20px;
+	font-weight: 300;
+	text-transform: uppercase;
+	letter-spacing: -0.1em;
+}
+
+nav .menu {
+	width: 24px;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 7px;
+	overflow: visible;
+}
+
+nav .menu svg {
+	width: 24px;
+	height: 24px;
+	fill: var(--secondary);
+	cursor: pointer;
+}
+
+button,
+.btn {
+	width: fit-content;
+	padding: 0px 16px;
+	border: none;
+	background: var(--primary);
+	color: var(--secondary);
+	border-radius: 20em;
+	text-transform: uppercase;
+	text-decoration: none;
+	box-sizing: border-box;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font:
+		400 20px "Poppins",
+		sans-serif;
+	letter-spacing: -0.04em;
+	line-height: 1.2em;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+button:hover {
+	background: var(--secondary);
+	color: var(--primary);
+}
+
+.btn-primary {
+	background: var(--accent);
+	color: var(--primary);
+	border: 2px solid var(--accent);
+	text-decoration: none;
+}
+
+.btn-primary:hover {
+	background: var(--accent);
+	color: var(--primary);
+	opacity: 0.6;
+}
+
+.btn-secondary {
+	color: var(--accent);
+	border: 1px solid var(--accent);
+	text-decoration: none;
+}
+
+.btn-secondary:hover {
+	background: none;
+	color: var(--accent);
+	opacity: 0.6;
+}
+
+input,
+textarea {
+	width: 100%;
+	background: var(--primary);
+	border: 1px solid var(--border);
+	color: var(--secondary);
+	border-radius: 4px;
+	box-sizing: border-box;
+}
+
+svg {
+	max-width: 40px;
+}
+
+.nav-menu {
+	position: fixed;
+	right: 0;
+	width: 100%;
+	height: 93.8vh;
+	margin: 0;
+	padding: 0;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-end;
+	justify-content: flex-start;
+	list-style: none;
+	background: #0d0d0dcc;
+	border-left: 1px solid var(--border);
+	backdrop-filter: blur(5px);
+	opacity: 0;
+	visibility: hidden;
+	transition:
+		opacity 0.3s ease,
+		visibility 0.3s;
+	z-index: 20;
+}
+
+.nav-menu.active {
+	opacity: 1;
+	visibility: visible;
+}
+
+.nav-menu li {
+	width: 100%;
+	border-bottom: 1px solid #ffffff1f;
+	cursor: pointer;
+}
+
+.nav-menu li a {
+	display: block;
+	width: 100%;
+	padding: 0px 20px;
+	box-sizing: border-box;
+	text-decoration: none;
+	color: var(--secondary);
+	font-size: 120px;
+	text-align: right;
+	text-transform: uppercase;
+	font-weight: 400;
+	letter-spacing: -6px;
+	line-height: 0.8;
+}
+
+.nav-menu li a:hover {
+	background: var(--secondary);
+	color: var(--primary);
+}
+
+.toast {
+	position: fixed;
+	bottom: 20px;
+	left: 0;
+	right: 0;
+	width: fit-content;
+	height: fit-content;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	gap: 8px;
+	margin-inline: auto;
+	padding: 12px;
+	background: #00442299;
+	color: var(--success);
+	fill: var(--success);
+	border: 2px solid var(--success);
+	border-radius: 4px;
+	backdrop-filter: blur(5px);
+	transition: all 0.5s ease;
+	z-index: 11;
+}
+
+.toast.error {
+	background: #1c000099;
+	color: var(--danger);
+	fill: var(--danger);
+	border: 2px solid var(--danger);
+}
+
+.toast svg {
+	width: 20px;
+	height: 20px;
+	fill: inherit;
+}
+
+.toast p {
+	width: fit-content;
+	height: fit-content;
+	color: inherit;
+	font-size: 16px;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+@media (max-width: 809px) {
+	.nav-menu li a {
+		font-size: 76px;
+	}
+
+	.toast {
+		gap: 4px;
+		width: -webkit-fill-available;
+		margin: 0px 20px;
+		left: 0;
+		right: 0;
+		padding: 10px 12px;
+	}
+
+	.toast p {
+		font-size: 12px;
+	}
+
+	.toast svg {
+		width: 16px;
+		height: 16px;
+	}
+}

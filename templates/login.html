@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLY$T</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/auth.css">
+</head>
+<body>
+    <nav>
+        <p>Clyst</p>
+        <div class="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 18V20H5V18H16ZM21 11V13H3V11H21ZM19 4V6H8V4H19Z"></path></svg>
+        </div>
+    </nav>
+    <ul class="nav-menu">
+        <li><a href="store">STORE</a></li>
+        <li><a href="register">REGISTER</a></li>
+    </ul>
+    <main>
+        <form action="/login" method="post" class="form login-form">
+            <h1>LOGIN</h1>
+            {% with messages = get_flashed_messages(with_categories=true) %}
+                {% if messages %}
+                    {% for category, message in messages %}
+                    <div class="toast {{ category }}">
+                        <p>{{ message }}</p>
+                    </div>
+                    {% endfor %}
+                {% endif %}
+            {% endwith %}
+            <div class="input-form">
+                <div class="input-group">
+                    <label for="email">Email</label>
+                    <input type="text" id="email" name="email">
+                    <small>Error message</small>
+                </div>
+                <div class="input-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password">
+                    <small>Error message</small>
+                </div>
+            </div>
+            <button type="submit" class="btn btn-primary login-btn">LOGIN</button>
+            <p class="register">Don't have an account? <a href="register">Register</a></p>
+        </form>
+    </main>
+    
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/auth.js"></script>
+</body>
+</html>

@@ -1,0 +1,154 @@
+main {
+	width: 100%;
+	height: 90vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+}
+
+form {
+	width: 100%;
+	max-width: 724px;
+	display: flex;
+	flex-direction: column;
+	align-items: flex-start;
+	justify-content: center;
+	gap: 20px;
+	padding: 24px;
+	border: 1px solid var(--border);
+	border-radius: 4px;
+}
+
+.login-form {
+	max-width: 528px;
+}
+
+form h1 {
+	width: 100%;
+	font-size: 80px;
+	text-align: left;
+	letter-spacing: -0.08em;
+	line-height: 0.8em;
+}
+
+form .input-form {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 20px;
+}
+
+form .input-form .input-group {
+	width: 100%;
+	height: fit-content;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	gap: 4px;
+}
+
+form .input-form .input-group label {
+	width: 100%;
+	font-size: 20px;
+	text-align: justify;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+form .input-form .input-group input {
+	width: 100%;
+	height: 40px;
+	padding: 8px;
+	border-width: 2px;
+	font-size: 32px;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+form .input-form .input-group input.success {
+	border: 1px solid var(--success);
+}
+
+form .input-form .input-group input.error {
+	border: 1px solid var(--error);
+}
+
+form .input-form .contact {
+	flex-direction: row;
+	align-items: flex-start;
+	gap: 20px;
+}
+
+form .input-form .input-group small {
+	display: none;
+	width: 100%;
+	color: var(--danger);
+	font-size: 16px;
+	text-align: left;
+	letter-spacing: -0.04em;
+	line-height: 0.8em;
+}
+
+form .login-btn {
+	width: 100%;
+	padding: 8px;
+	border-radius: 4px;
+	font-size: 24px;
+	letter-spacing: -0.04em;
+	line-height: 1.2em;
+	cursor: pointer;
+}
+
+form .register {
+	width: 100%;
+	font-size: 20px;
+	text-align: center;
+	letter-spacing: -0.04em;
+	line-height: 1.1em;
+}
+
+form .register a {
+	color: var(--accent);
+}
+
+.toast {
+	position: static;
+	width: -webkit-fill-available;
+	align-items: flex-start;
+	justify-content: flex-start;
+	margin: 0;
+	background: none;
+	color: var(--danger);
+	border: none;
+	padding: 0;
+}
+
+.toast p {
+	font-size: 20px;
+	letter-spacing: -0.06em;
+}
+
+@media (max-width: 809px) {
+	main {
+		align-items: flex-start;
+	}
+
+	form {
+		width: -webkit-fill-available;
+		justify-content: flex-start;
+		padding: 40px 20px 20px;
+		border: none;
+	}
+
+	form .input-form .contact {
+		flex-direction: column;
+	}
+
+	.toast {
+		font-size: 12px;
+	}
+}

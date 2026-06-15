@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLY$T</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/profile.css">
+</head>
+<body>
+    
+    <style>
+        .prod:hover .prod-img {
+	        opacity: 0.8;
+        }
+    </style>
+
+    <nav>
+        <p>Clyst</p>
+        <div class="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 18V20H5V18H16ZM21 11V13H3V11H21ZM19 4V6H8V4H19Z"></path></svg>
+        </div>
+    </nav>
+    {% include "nav.html" %}
+    <div class="banner">
+        {% if user.mimetype %}
+        <div class="avatar" data-has-dp="true" style="background-image: url('{{ url_for('get_dp', user_id=user.id) }}');"></div>
+        {% else %}
+        <div class="avatar" data-has-dp="false">{{ user.name[0].upper() }}</div>
+        {% endif %}
+    </div>
+    <main class="profile">
+        <div class="artist">
+            <h1>{{ user.name }}</h1>
+            <button class="btn btn-primary contact-btn">CONTACT</button>
+            <div class="contact-info" id="contact-info">
+                <div class="contact email">
+                    <p class="con-head">Email</p>
+                    <p>{{ user.email }}</p>
+                </div>
+                <div class="contacts">
+                    <div class="contact phone">
+                        <p class="con-head">Phone number</p>
+                        <p>{% if user.phone %}{{ user.phone }}{%else%}N/A{% endif %}</p>
+                    </div>
+                    <div class="contact location">
+                        <p class="con-head">Location</p>
+                        <p>{% if user.location %}{{ user.location }}{%else%}N/A{% endif %}</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <p class="header">Products</p>
+        <div class="prods">
+            {% for prod in prods %}
+            <div class="prod" onclick="location.href='{{ url_for('prod', prod_id=prod.id) }}'" style="cursor: pointer;">
+                <div class="prod-img" style="background-image: url('{{ url_for('get_prod_image', prod_id=prod.id) }}');">
+                    <!-- <div class="icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M20.998 3V5C20.998 14.6274 15.6255 19 8.99805 19L7.0964 18.9999C7.3079 15.9876 8.24541 14.1648 10.6939 11.9989C11.8979 10.9338 11.7965 10.3189 11.2029 10.6721C7.1193 13.1016 5.09114 16.3862 5.00119 21.6302L4.99805 22H2.99805C2.99805 20.6373 3.11376 19.3997 3.34381 18.2682C3.1133 16.9741 2.99805 15.2176 2.99805 13C2.99805 7.47715 7.4752 3 12.998 3C14.998 3 16.998 4 20.998 3Z"></path></svg>
+                    </div>
+                    <div class="icon ai">
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M12 22C6.47715 22 2 17.5228 2 12C2 6.47715 6.47715 2 12 2C17.5228 2 22 6.47715 22 12C22 17.5228 17.5228 22 12 22ZM12 20C16.4183 20 20 16.4183 20 12C20 7.58172 16.4183 4 12 4C7.58172 4 4 7.58172 4 12C4 16.4183 7.58172 20 12 20ZM11 15H13V17H11V15ZM11 7H13V13H11V7Z"></path></svg>
+                    </div> -->
+                </div>
+                <p>{{ prod.name }}</br>₹{{ prod.price }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </main> 
+    
+    <script src="../static/js/menu.js"></script>
+    <script src="../static/js/profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CLY$T</title>
+    <link rel="stylesheet" href="../static/css/styles.css">
+    <link rel="stylesheet" href="../static/css/index.css">
+</head>
+<body>
+    <nav>
+        <p>Clyst</p>
+        <div class="menu">
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor"><path d="M16 18V20H5V18H16ZM21 11V13H3V11H21ZM19 4V6H8V4H19Z"></path></svg>
+        </div>
+    </nav>
+    {% include "nav.html" %}
+    <header class="hero">
+        <!-- <img src="../static/images/clyst.png" alt="Hero Image"> -->
+        <div class="blur"></div>
+        <div class="hero-info">
+            <h1>CONNECTING LOCAL YIELD w., SMART TECHNOLOGY</h1>
+            <div class="btns">
+                <a class="btn btn-primary action-btn" href="add">START SELLING</a>
+                <a class="btn btn-secondary action-btn" href="store">EXPLORE STORE</a>
+            </div>
+        </div>
+    </header>
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="toast {{ category }}">
+                    <p>{{ message }}</p>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <script src="../static/js/menu.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            const flashes = document.querySelectorAll('.toast');
+            if (!flashes.length) return;
+
+            setTimeout(() => {
+                flashes.forEach(f => f.remove());
+            }, 6000);
+        });
+    </script>
+</body>
+</html>
