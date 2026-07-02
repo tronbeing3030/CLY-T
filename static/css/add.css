@@ -130,6 +130,10 @@
 	fill: inherit;
 }
 
+.item .image .prompt .speak {
+	display: none;
+}
+
 .item .image .upload svg {
 	width: 48px;
 	max-width: 63px;
