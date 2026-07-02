@@ -13,9 +13,10 @@ load_dotenv()
 from models.models import User, Product, db
 from py import translate_text, ai_detect
 
-app = Flask(__name__)
+app = Flask(__name__, static_folder='static', static_url_path='/static', template_folder='templates')
 app.config["SECRET_KEY"] = os.environ.get("SECRET_KEY", "dev-secret")
-app.config["SQLALCHEMY_DATABASE_URI"] = "sqlite:///shop.db"
+app.config["SQLALCHEMY_DATABASE_URI"] = os.environ.get("DATABASE_URL", "sqlite:///shop.db")
+app.config["SQLALCHEMY_TRACK_MODIFICATIONS"] = False
 
 
 db.init_app(app)
@@ -342,4 +343,5 @@ def generate():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    is_production = os.environ.get("FLASK_ENV") == "production"
+    app.run(debug=not is_production, host='0.0.0.0' if is_production else 'localhost')
